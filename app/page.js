@@ -42,16 +42,21 @@ const page = () => {
 		let copy = [...mainTasks];
 		let spliced = copy.splice(i, 1);
 		localStorage.setItem("mainTasks", JSON.stringify(copy));
-		localStorage.setItem("completeTasks", JSON.stringify([...completeTasks, ...spliced]));
+		localStorage.setItem(
+			"completeTasks",
+			JSON.stringify([...completeTasks, ...spliced])
+		);
 		setMainTasks(copy);
 		setCompleteTasks([...completeTasks, ...spliced]);
-
 	};
 
 	if (mainTasks.length > 0) {
 		renderTask = mainTasks.map((task, i) => {
 			return (
-				<li key={i} className="lg:flex lg:justify-between lg:items-center lg:mb-2 block mb-4 pr-4">
+				<li
+					key={i}
+					className="lg:flex lg:justify-between lg:items-center lg:mb-2 block mb-4 pr-4"
+				>
 					<hr className="border-slate-950 my-4 lg:hidden" />
 					<div className="flex justify-between lg:mb-1 px-10 lg:w-2/3 text-wrap mb-4">
 						<h1 className="text-lg font-bold text-wrap">{task.title}</h1>
@@ -80,13 +85,18 @@ const page = () => {
 	if (completeTasks.length > 0) {
 		completeTask = completeTasks.map((task, i) => {
 			return (
-				<li key={i} className="lg:flex lg:justify-evenly lg:items-center lg:mb-2 block mb-4">
+				<li
+					key={i}
+					className="lg:flex lg:justify-evenly lg:items-center lg:mb-2 block mb-4"
+				>
 					<hr className="border-slate-950 my-4 lg:hidden" />
 					<div className="flex justify-between lg:mb-1 px-10 lg:w-2/3 text-wrap mb-4">
 						<h1 className="text-lg font-bold lg:w-1/2 text-wrap">
 							{task.title}
 						</h1>
-						<h3 className="text-gray-700 lg:w-1/2 text-wrap">{task.desc}</h3>
+						<h3 className="text-gray-700 lg:w-1/2 text-wrap">
+							{task.desc}
+						</h3>
 					</div>
 					<button
 						className="rounded bg-red-500 text-red-100 font-bold py-1 px-2 ml-8 lg:ml-0"
@@ -105,7 +115,7 @@ const page = () => {
 		e.preventDefault();
 		setMainTasks([...mainTasks, { title, desc }]);
 		localStorage.setItem("mainTasks", JSON.stringify(mainTasks));
-		
+
 		settitle("");
 		setdesc("");
 	};
@@ -116,7 +126,10 @@ const page = () => {
 				My TODO List
 			</h1>
 
-			<form className="text-center flex justify-center items-center flex-col lg:flex-row px-8" onSubmit={submitHandeler}>
+			<form
+				className="text-center flex justify-center items-center flex-col lg:flex-row px-8"
+				onSubmit={submitHandeler}
+			>
 				<input
 					type="text"
 					required
