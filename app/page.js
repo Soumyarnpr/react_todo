@@ -51,13 +51,14 @@ const page = () => {
 	if (mainTasks.length > 0) {
 		renderTask = mainTasks.map((task, i) => {
 			return (
-				<li key={i} className="flex justify-between items-center mb-2">
-					<div className="flex justify-between mb-1 px-10 w-2/3 text-wrap">
+				<li key={i} className="lg:flex lg:justify-between lg:items-center lg:mb-2 block mb-4 pr-4">
+					<hr className="border-slate-950 my-4 lg:hidden" />
+					<div className="flex justify-between lg:mb-1 px-10 lg:w-2/3 text-wrap mb-4">
 						<h1 className="text-lg font-bold text-wrap">{task.title}</h1>
 						<h3 className="text-gray-700 text-wrap">{task.desc}</h3>
 					</div>
 					<button
-						className="rounded bg-green-500 text-green-100 font-bold py-1 px-2"
+						className="rounded bg-green-500 text-green-100 font-bold py-1 px-2 ml-8 mr-16 lg:mr-0 lg:ml-0"
 						onClick={() => {
 							completeHandeler(i);
 						}}
@@ -79,15 +80,16 @@ const page = () => {
 	if (completeTasks.length > 0) {
 		completeTask = completeTasks.map((task, i) => {
 			return (
-				<li key={i} className="flex justify-evenly items-center mb-2">
-					<div className="flex justify-between mb-1 px-10 w-2/3 text-wrap">
-						<h1 className="text-lg font-bold w-1/2 text-wrap">
+				<li key={i} className="lg:flex lg:justify-evenly lg:items-center lg:mb-2 block mb-4">
+					<hr className="border-slate-950 my-4 lg:hidden" />
+					<div className="flex justify-between lg:mb-1 px-10 lg:w-2/3 text-wrap mb-4">
+						<h1 className="text-lg font-bold lg:w-1/2 text-wrap">
 							{task.title}
 						</h1>
-						<h3 className="text-gray-700 w-1/2 text-wrap">{task.desc}</h3>
+						<h3 className="text-gray-700 lg:w-1/2 text-wrap">{task.desc}</h3>
 					</div>
 					<button
-						className="rounded bg-red-500 text-red-100 font-bold py-1 px-2"
+						className="rounded bg-red-500 text-red-100 font-bold py-1 px-2 ml-8 lg:ml-0"
 						onClick={() => {
 							deleteCHandeler(i);
 						}}
@@ -114,11 +116,11 @@ const page = () => {
 				My TODO List
 			</h1>
 
-			<form className="text-center" onSubmit={submitHandeler}>
+			<form className="text-center flex justify-center items-center flex-col lg:flex-row px-8" onSubmit={submitHandeler}>
 				<input
 					type="text"
 					required
-					className="px-3 py-2 border-2 rounded m-2"
+					className="px-3 py-2 border-2 rounded m-2 w-full lg:w-1/3"
 					placeholder="Enter Task Here..."
 					value={title}
 					onChange={(e) => {
@@ -127,7 +129,7 @@ const page = () => {
 				/>
 				<input
 					type="text"
-					className="px-3 py-2 border-2 rounded m-2"
+					className="px-3 py-2 border-2 rounded m-2 w-full lg:w-1/3"
 					placeholder="Enter Description Here..."
 					value={desc}
 					onChange={(e) => {
@@ -140,14 +142,14 @@ const page = () => {
 			</form>
 
 			<div className="px-6 py-3 my-6 bg-slate-200">
-				<h1 className="pl-3 font-extrabold text-zinc-900 text-2xl mb-3">
+				<h1 className="pl-3 font-extrabold text-indigo-950 text-2xl mb-3">
 					Pending Tasks
 				</h1>
 				<ol>{renderTask}</ol>
 
 				<hr className="border-slate-950 my-4" />
 
-				<h1 className="pl-3 font-extrabold text-zinc-900 text-2xl mb-3">
+				<h1 className="pl-3 font-extrabold text-indigo-950 text-2xl mb-3">
 					Completed Tasks
 				</h1>
 				<ol>{completeTask}</ol>
